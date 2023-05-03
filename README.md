@@ -1,2 +1,2 @@
 # FRC5401DevResources
-Resources for new &amp; returning Team 5401 robots
+The goto resource "library" for commonly used Subsystems, Commands, and CommandGroups with a basic outline of the FRC WPILib project file structure. 
