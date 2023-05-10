@@ -28,7 +28,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     hardware = new Hardware();
     claw = new ExampleClaw();
-
+    drivebase = new ExampleDrivebase();
   }
 
   /** This function is run once each time the robot enters autonomous mode. */

@@ -9,6 +9,7 @@ public class SparkMAXMotorGroup {
 	private String name;
 
 	public SparkMAXMotorGroup(String name, CANSparkMax masterMotor, CANSparkMax... motors) {
+		
 		this.name = name;
 		this.masterMotor = masterMotor;
 		this.motors = motors;

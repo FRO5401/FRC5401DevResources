@@ -3,11 +3,13 @@ package frc.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
+import com.revrobotics.SparkMaxPIDController;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import frc.robot.Utilities.SparkMAXMotorGroup;
+import frc.robot.Utilities.SparkMaxPIDConfig;
 
 public class Hardware {
     public CANSparkMax leftDrive1;
@@ -25,7 +27,16 @@ public class Hardware {
 
     public CANSparkMax leftArm;
     public CANSparkMax rightArm;
-    public CANSparkMax translateArm;
+    public CANSparkMax transArm;
+
+    public SparkMaxPIDConfig leftArmPIDConfig;
+    public SparkMaxPIDConfig rightArmPIDConfig;
+    public SparkMaxPIDConfig transArmPIDConfig;
+
+    public SparkMaxPIDController leftArmPID;
+    public SparkMaxPIDController rightArmPID;
+    public SparkMaxPIDController transArmPID;
+
 
 
     public Hardware() {
@@ -48,7 +59,18 @@ public class Hardware {
         //Simple arm hardware
         leftArm = new CANSparkMax(4, MotorType.kBrushless);
         rightArm = new CANSparkMax(5, MotorType.kBrushless);
-        translateArm = new CANSparkMax(6, MotorType.kBrushless);
+        transArm = new CANSparkMax(6, MotorType.kBrushless);
+
+        leftArmPIDConfig = new SparkMaxPIDConfig("Left Arm PID Controler", leftArm.getPIDController(), 0, 0, 0, 0);
+        rightArmPIDConfig = new SparkMaxPIDConfig("Left Arm PID Controler", rightArm.getPIDController(), 0, 0, 0, 0);
+        transArmPIDConfig = new SparkMaxPIDConfig("Left Arm PID Controler", transArm.getPIDController(), 0, 0, 0, 0);
+
+
+        leftArmPID = leftArmPIDConfig.getConfPIDController();
+        rightArmPID = rightArmPIDConfig.getConfPIDController();
+        transArmPID = transArmPIDConfig.getConfPIDController();
+
+        
 
 
 
