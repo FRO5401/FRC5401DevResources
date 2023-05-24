@@ -3,10 +3,13 @@ package frc.robot.Subsystems;
 import frc.robot.Robot;
 import frc.robot.Utilities.SparkMAXMotorGroup;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.ControlType;
 
@@ -28,6 +31,10 @@ public class ExampleSimpleArm extends SubsystemBase {
   private SparkMaxPIDController leftArmPID = Robot.hardware.leftArmPID;
   private SparkMaxPIDController rightArmPID = Robot.hardware.rightArmPID;
   private SparkMaxPIDController transArmPID = Robot.hardware.transArmPID;
+
+  private RelativeEncoder leftArmEnc = Robot.hardware.leftArmEnc;
+  private RelativeEncoder rightArmEnc = Robot.hardware.leftArmEnc;
+
 
   public class ArmState {
     private double radialPos;
@@ -55,15 +62,14 @@ public class ExampleSimpleArm extends SubsystemBase {
   }
 
   public void setPivotSpeed(double power) {
-    leftArm.set(power);
     rightArm.set(power);
-    SmartDashboard.putNumber("Left Drive Output ", power);
-    SmartDashboard.putNumber( "Right Drive Output ", power);    
+    SmartDashboard.putNumber("Left Arm Output ", power);
+    SmartDashboard.putNumber( "Right Arm Output ", power);    
 }
 
   public void setTranslateSpeed(double power) {
     translateArm.set(power);
-    SmartDashboard.putNumber( "Translate Output ", power);    
+    SmartDashboard.putNumber( "Translate Arm Output ", power);    
   }
 
   public void setPosition(ArmState armState){
@@ -84,14 +90,15 @@ public class ExampleSimpleArm extends SubsystemBase {
   public ArmState getArmState(){
     return currentArmState;
   }
-  public double[] getPosition(){
+  public List<Double> getPositions(){
+    List<Double> positions = new ArrayList<Double>(3);
+    positions.add(leftArmEnc.getPosition());
+    positions.add(rightArmEnc.getPosition());
 
-    double[] position = {};
-    //position[0] = rightArmPID.getPosition();
-    //position[1] = rightArmPID.getPosition();
-    //position[2] = rightArmPID.getPosition();
-  
-     return (double[]) position;
+    //Average velocity of the two shooter motors for indication of shared axle problems
+    positions.add((rightArmEnc.getPosition() + leftArmEnc.getPosition()) / 2); 
+     return positions;
   }
+
 
 }
