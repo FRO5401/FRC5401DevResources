@@ -13,13 +13,11 @@ import frc.robot.Utilities.SparkMAXMotorGroup;
 import frc.robot.Utilities.SparkMaxPIDConfig;
 
 public class Hardware {
-
+    //Example drivebase hardware
     public CANSparkMax leftDrive1;
 	public CANSparkMax leftDrive2;
-	public CANSparkMax leftDrive3;
 	public CANSparkMax rightDrive1;
 	public CANSparkMax rightDrive2;
-	public CANSparkMax rightDrive3;
 
     public RelativeEncoder leftDrive1Enc;
     public RelativeEncoder leftDrive2Enc;
@@ -29,9 +27,11 @@ public class Hardware {
     public SparkMAXMotorGroup leftDriveMotors;
     public SparkMAXMotorGroup rightDriveMotors;
 
+    //Example claw hardware
     public Solenoid firstClawStage; 
     public Solenoid secondClawStage; 
 
+    //Example arm hardware
     public CANSparkMax leftArm;
     public CANSparkMax rightArm;
     public CANSparkMax transArm;
@@ -48,6 +48,7 @@ public class Hardware {
     public RelativeEncoder rightArmEnc;
     public RelativeEncoder transArmEnc;
 
+    //Example shooter hardware
     public CANSparkMax leftShooterMotor;
     public CANSparkMax rightShooterMotor;
 
@@ -56,6 +57,16 @@ public class Hardware {
 
     public RelativeEncoder leftShooterEnc;
     public RelativeEncoder rightShooterEnc;
+
+    //Example elevator hardware
+    public CANSparkMax rightElevatorMotor;
+    public CANSparkMax leftElevatorMotor;
+
+    public SparkMaxPIDController leftElevatorPID;
+    public SparkMaxPIDController rightElevatorPID;
+
+    public RelativeEncoder leftElevatorEnc;
+    public RelativeEncoder rightElevatorEnc;
   
 
    
@@ -69,9 +80,9 @@ public class Hardware {
         rightDrive2 = new CANSparkMax(3, MotorType.kBrushless);
 
         leftDrive1Enc = leftDrive1.getEncoder();
-        leftDrive2Enc = leftDrive1.getEncoder();
-        rightDrive1Enc = leftDrive1.getEncoder();
-        rightDrive2Enc = leftDrive1.getEncoder();
+        leftDrive2Enc = leftDrive2.getEncoder();
+        rightDrive1Enc = rightDrive1.getEncoder();
+        rightDrive2Enc = rightDrive2.getEncoder();
 
         leftDriveMotors = new SparkMAXMotorGroup("Left Drive Motor Group", leftDrive1, leftDrive2);
         rightDriveMotors = new SparkMAXMotorGroup("Right Drive Motor Group", rightDrive1, rightDrive2);
@@ -88,9 +99,9 @@ public class Hardware {
         rightArm = new CANSparkMax(5, MotorType.kBrushless);
         transArm = new CANSparkMax(6, MotorType.kBrushless);
 
-        leftArmPIDConfig = new SparkMaxPIDConfig("Left Arm PID Controler", leftArm.getPIDController(), 0, 0, 0, 0);
-        rightArmPIDConfig = new SparkMaxPIDConfig("Left Arm PID Controler", rightArm.getPIDController(), 0, 0, 0, 0);
-        transArmPIDConfig = new SparkMaxPIDConfig("Left Arm PID Controler", transArm.getPIDController(), 0, 0, 0, 0);
+        leftArmPIDConfig = new SparkMaxPIDConfig("Left Arm PID Controller", leftArm.getPIDController(), 0, 0, 0, 0);
+        rightArmPIDConfig = new SparkMaxPIDConfig("Right Arm PID Controller", rightArm.getPIDController(), 0, 0, 0, 0);
+        transArmPIDConfig = new SparkMaxPIDConfig("Trans Arm PID Controller", transArm.getPIDController(), 0, 0, 0, 0);
 
         leftArmPID = leftArmPIDConfig.getConfPIDController();
         rightArmPID = rightArmPIDConfig.getConfPIDController();
@@ -98,7 +109,22 @@ public class Hardware {
         
         leftArmEnc = leftArm.getEncoder();
         rightArmEnc = rightArm.getEncoder();
-      
+        transArmEnc = transArm.getEncoder();
+
+        //Simple elevator hardware
+        leftElevatorMotor = new CANSparkMax(6, MotorType.kBrushless);
+        rightElevatorMotor = new CANSparkMax(7, MotorType.kBrushless);
+
+        leftArmPIDConfig = new SparkMaxPIDConfig("Left Elevator Motor PID Controller", leftArm.getPIDController(), 0, 0, 0, 0);
+        rightArmPIDConfig = new SparkMaxPIDConfig("Right Elevator Motor PID Controller", rightArm.getPIDController(), 0, 0, 0, 0);
+
+        leftArmPID = leftArmPIDConfig.getConfPIDController();
+        rightArmPID = rightArmPIDConfig.getConfPIDController();
+        transArmPID = transArmPIDConfig.getConfPIDController();
+        
+        leftArmEnc = leftArm.getEncoder();
+        rightArmEnc = rightArm.getEncoder();
+        transArmEnc = rightArm.getEncoder();
 
 
     }

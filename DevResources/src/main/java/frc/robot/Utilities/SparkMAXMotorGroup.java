@@ -33,6 +33,14 @@ public class SparkMAXMotorGroup {
 		}
 	}
 
+	public void setVoltages(double power) {
+		masterMotor.setVoltage(power);
+		for (CANSparkMax motor : this.motors) {
+			motor.setVoltage(power);
+		}
+	}
+
+
 	public void stop() {
 		set(0);
 	}

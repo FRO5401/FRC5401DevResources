@@ -72,7 +72,7 @@ public class ExampleSimpleArm extends SubsystemBase {
     SmartDashboard.putNumber( "Translate Arm Output ", power);    
   }
 
-  public void setPosition(ArmState armState){
+  public void setPositions(ArmState armState){
     currentArmState = armState;
     double rotSetpoint = armState.radialPos;
     double transSetpoint = armState.transPos;

@@ -66,21 +66,19 @@ public class ExampleShooter extends SubsystemBase {
       
 }
 
-  public void setPosition(ShooterState shooterState){
-    currentShooterState = shooterState;
-    double rotSetpoint = currentShooterState.shooterSpeedPercent;
-    double transSetpoint = currentShooterState.shooterSpeedRPM;
+  public void setSpeeds(ShooterState shooterState){
+    currentShooterState = getShooterState();
+    double setpointRPM = currentShooterState.shooterSpeedRPM;
+    double setpointPercent = currentShooterState.shooterSpeedPercent;
 
-    rightShooterPID.setReference(rotSetpoint, ControlType.kSmartMotion);
-    leftShooterPID.setReference(rotSetpoint, ControlType.kSmartMotion);
+    rightShooterPID.setReference(setpointPercent, ControlType.kSmartMotion);
 
-    SmartDashboard.putNumber("Right Arm Setpoint", rotSetpoint);
-    SmartDashboard.putNumber("Left Arm Setpoint", rotSetpoint);
-    SmartDashboard.putNumber("Trans Arm Setpoint", transSetpoint);
+    SmartDashboard.putNumber("Left Shooter Setpoint", setpointPercent);
+    SmartDashboard.putNumber("Right Shooter Setpoint", setpointPercent);
   }
 
 
-  public ShooterState getArmState(){
+  public ShooterState getShooterState(){
     return currentShooterState;
   }
   public List<Double> getSpeeds(){
