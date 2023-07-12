@@ -1,6 +1,7 @@
 # Welcome to FRC Dev Resources!
 
-  This is team 5401's resource library for commonly used Subsystems, Commands, and CommandGroups with a basic outline of the FRC WPILib project file structure.
+ ## This is team 5401's resource library for commonly used Subsystems, Commands, and CommandGroups with a basic outline of the FRC WPILib project file structure.
+
   In this Read Me are a few tidbits of information, useful to keep in mind while coding.
 
 ### Wonky Code
