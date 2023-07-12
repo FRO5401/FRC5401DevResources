@@ -23,7 +23,7 @@ When adding more to the code, it's recommended that you create a new branch.
 The intention of your new branch should have a name to reflect it.
 You can create a new branch with: (**replace `<my-branch>` with the name of your branch**)
 
-```bash
+```
 git checkout -b <my-branch>
 ```
 
@@ -38,9 +38,9 @@ Then you can send a pull request to the main branch, and once everything is chec
 Once the main branch is completed with no errors in it, you can deploy your robot code using the following steps:
 ```
   1. Power on the robot that you want to deploy the robot code to.
-  1. Connect your computer's wifi to the robot's radio.
-  1. Open up the main branch in WPI version of VS Code.
-  1. Use 'Control + Shift + P' inside VScode, and search for Deploy Robot Code.
-  1. Click Deploy Robot Code
+  2. Connect your computer's wifi to the robot's radio.
+  3. Open up the main branch in WPI version of VS Code.
+  4. Use 'Control + Shift + P' inside VScode, and search for Deploy Robot Code.
+  5. Click Deploy Robot Code
 ```
 Now you can test your robot code on your robot.
