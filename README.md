@@ -8,7 +8,7 @@ In this Read Me are a few tidbits of information, useful to keep in mind while c
 With the stress and rushed atmosphere while creating code during the season, everyone creates wonky or unclean code. 
 This is an inevitable byproduct of the heat of the build season, but it's easier for changes down the line if you try to get our code as clean as possible.
 If you have extra time during the season, or even after build season is over, look back at your code to see if there are any improvements that could be made, so that other programmers can easily use your code as a starting point.
-Solid code makes development and improvement much easier.
+Clean code makes development and improvement much easier.
 
 ### Comments
 
@@ -32,3 +32,15 @@ git checkout -b <my-branch>
 Before merging your branch, you should run tests with it to make sure it is fully functional with no errors.
 Testing your changes on the robot is the best way to test your code.
 Then you can send a pull request to the main branch, and once everything is checked by the programming lead, they will approve the merge.
+
+### Deploying Robot Code
+
+Once the main branch is completed with no errors in it, you can deploy your robot code using the following steps:
+```
+  1. Power on the robot that you want to deploy the robot code to.
+  1. Connect your computer's wifi to the robot's radio.
+  1. Open up the main branch in WPI version of VS Code.
+  1. Use 'Control + Shift + P' inside VScode, and search for Deploy Robot Code.
+  1. Click Deploy Robot Code
+```
+Now you can test your robot code on your robot.
