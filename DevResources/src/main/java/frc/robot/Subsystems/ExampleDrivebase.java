@@ -24,7 +24,6 @@ public class ExampleDrivebase extends SubsystemBase {
   // here. Call these from Commands.
 
   // defines and instantiates variables for motor groups and encoders
-  ///??? QUESTION SHOULD THESE BE SPLIT INTO DEFINITIONS THEN INSTANTIAIONS???
   private SparkMAXMotorGroup leftDrives = Robot.hardware.leftDriveMotors;
   private SparkMAXMotorGroup rightDrives = Robot.hardware.rightDriveMotors;
   
@@ -53,7 +52,7 @@ public class ExampleDrivebase extends SubsystemBase {
     //resets gyro
     navX.reset();
 
-    //instantiates variables ????what do the variables do??
+    //instantiates variables 
     turn_kP = 1f/30f; 
     turn_kI = 0; 
     turn_kD = 0;
@@ -87,7 +86,7 @@ public class ExampleDrivebase extends SubsystemBase {
 
   // Tested: Negative, negative
   public void driveByVolts(double leftVolts, double rightVolts) {
-    //method to drive by voltages????
+    //method to drive by voltages
     leftDrives.setVoltages(-leftVolts);
     rightDrives.setVoltages(-rightVolts);
   }
@@ -110,22 +109,22 @@ public class ExampleDrivebase extends SubsystemBase {
   }
 
   public double getHeading() {
-    //method to get the degrees?????
+    //method to get the rotation of the robot
     return navX.getRotation2d().getDegrees();
   }
 
   public void zeroHeading() {
-    //method to reset the gyro???
+    //method to reset the gyro
     navX.reset();
   }
 
   public double getTurnRate() {
-    //idk gets the rate of how often it turns?
+    //how fast it turns
     return -navX.getRate();
   }
 
   public Pose2d getPose(){
-    // idk gets position?
+    // gets the position on a 2d map 
     return odometry.getPoseMeters();
   }
 
@@ -140,7 +139,7 @@ public class ExampleDrivebase extends SubsystemBase {
   }
 
   public void resetOdometry(Pose2d pose){
-    //idk resets position?
+    //resets position in a 2d map
     resetEncoders();
     odometry.resetPosition(getAngle(), leftDrive1Enc.getPosition(), rightDrive1Enc.getPosition(), pose);
   }

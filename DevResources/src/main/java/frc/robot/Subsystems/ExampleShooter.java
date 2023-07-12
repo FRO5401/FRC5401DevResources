@@ -26,11 +26,10 @@ public class ExampleShooter extends SubsystemBase {
   // here. Call these from Commands.
 
   //defines and instantiates motors, pid controllers, and encoders
-    ///??? QUESTION SHOULD THESE BE SPLIT INTO DEFINITIONS THEN INSTANTIAIONS???
   private CANSparkMax leftShooterMotor = Robot.hardware.leftShooterMotor;
   private CANSparkMax rightShooterMotor = Robot.hardware.rightShooterMotor;
 
-  //why is leftshooterPID not used?
+
   private SparkMaxPIDController leftShooterPID = Robot.hardware.leftShooterPID;
   private SparkMaxPIDController rightShooterPID = Robot.hardware.rightShooterPID;
 
@@ -97,7 +96,7 @@ public class ExampleShooter extends SubsystemBase {
     return currentShooterState;
   }
   public List<Double> getSpeeds(){
-    //makes a list of speeds for the shooter????
+    //makes a list of speeds for the shooter
     List<Double> speeds = new ArrayList<Double>(3);
     speeds.add(leftShooterEnc.getVelocity());
     speeds.add(rightShooterEnc.getVelocity());
