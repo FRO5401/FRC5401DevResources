@@ -24,22 +24,22 @@ public class ExampleSimpleElevator extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private CANSparkMax leftElevatorMotor = Robot.hardware.leftElevatorMotor;
+  private CANSparkMax leftElevatorMotor = Robot.hardware.leftElevatorMotor; //Initiating the elevator motors
   private CANSparkMax rightElevatorMotor = Robot.hardware.rightElevatorMotor;
 
-  private SparkMaxPIDController leftElevatorPID = Robot.hardware.leftElevatorPID;
+  private SparkMaxPIDController leftElevatorPID = Robot.hardware.leftElevatorPID; //Initiating the PID motors
   private SparkMaxPIDController rightElevatorPID = Robot.hardware.rightElevatorPID;
 
-  private RelativeEncoder leftElevatorEnc = Robot.hardware.leftElevatorEnc;
+  private RelativeEncoder leftElevatorEnc = Robot.hardware.leftElevatorEnc; //Initiating the relative encoders
   private RelativeEncoder rightElevatorEnc = Robot.hardware.rightElevatorEnc;
 
 
-  public class ElevatorState {
+  public class ElevatorState { //Methods for the 2 positions
     private double leftPos;
     private double rightPos;
 
-    public ElevatorState(double leftPos, double rightPos){
-      this.leftPos = leftPos;
+    public ElevatorState(double leftPos, double rightPos){ 
+      this.leftPos = leftPos; //Sets the constructors
       this.rightPos = rightPos;
     };
     
@@ -48,31 +48,38 @@ public class ExampleSimpleElevator extends SubsystemBase {
   public ElevatorState currentElevatorState; 
 
 
+<<<<<<< Updated upstream
   Map<String, ElevatorState> elevatorStates = Map.ofEntries(
                     Map.entry("DEFAULT", new ElevatorState(0, 0)),
                     Map.entry("LOW_HEIGHT", new ElevatorState(5, 5)), 
                     Map.entry("HIGH_HEIGHT", new ElevatorState(10, 10))
+=======
+  Map<String, ElevatorState> elevatorStates = Map.ofEntries( 
+                    Map.entry("DEFAULT", new ElevatorState(0, 0)), //Setting default to 0, 0
+                    Map.entry("LOW_HEIGHT", new ElevatorState(5, 5)), //Setting low_height to 5, 5
+                    Map.entry("HIGH_HEIGHT", new ElevatorState(10, 10)) //Setting high_height to 10, 10
+>>>>>>> Stashed changes
 
                 );
         
   public ExampleSimpleElevator() {
     
-    leftElevatorMotor.setInverted(true);
-    leftElevatorMotor.follow(rightElevatorMotor);
+    leftElevatorMotor.setInverted(true); //Inverting the left motor
+    leftElevatorMotor.follow(rightElevatorMotor); //Sets the left motor to follow the right
   }
 
-  public void setPivotSpeed(double power) {
+  public void setPivotSpeed(double power) { //Sets the power of pivot
     rightElevatorMotor.set(power);
     SmartDashboard.putNumber("Left Arm Output ", power);
     SmartDashboard.putNumber( "Right Arm Output ", power);    
 }
 
-  public void setPositions(ElevatorState elevatorState){
+  public void setPositions(ElevatorState elevatorState){ //Sets the position of the elevator
     currentElevatorState = elevatorState;
     double leftSetpoint = elevatorState.leftPos;
     double rightSetpoint = elevatorState.rightPos;
 
-    leftElevatorPID.setReference(leftSetpoint, ControlType.kSmartMotion);
+    leftElevatorPID.setReference(leftSetpoint, ControlType.kSmartMotion); //Sets a reference point for PID
     rightElevatorPID.setReference(rightSetpoint, ControlType.kSmartMotion);
 
     SmartDashboard.putNumber("Right Setpoint", rightSetpoint);
@@ -80,10 +87,10 @@ public class ExampleSimpleElevator extends SubsystemBase {
   }
 
 
-  public ElevatorState getElevatorState(){
+  public ElevatorState getElevatorState(){ //Returns elevator state
     return currentElevatorState;
   }
-  public List<Double> getPositions(){
+  public List<Double> getPositions(){ //Uses an array to get positions of the elevator encoders
     List<Double> positions = new ArrayList<Double>(3);
     positions.add(leftElevatorEnc.getPosition());
     positions.add(rightElevatorEnc.getPosition());
