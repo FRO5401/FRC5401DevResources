@@ -2,10 +2,8 @@ package frc.robot.Subsystems;
 
 //imports resources
 import frc.robot.Robot;
-import frc.robot.Utilities.SparkMAXMotorGroup;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +24,7 @@ public class ExampleSimpleArm extends SubsystemBase {
   // here. Call these from Commands.
 
   //  defines and instantiates motors, pid controllers, and encoders
-  // ?? should they be on separate lines??
+
   private CANSparkMax leftArm = Robot.hardware.leftArm;
   private CANSparkMax rightArm = Robot.hardware.rightArm;
   private CANSparkMax translateArm = Robot.hardware.transArm;
