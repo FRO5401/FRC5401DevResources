@@ -22,8 +22,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  * Add your docs here.
  */
 public class ExampleShooter extends SubsystemBase {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  // Put methods for controlling this subsystem here. Call these from Commands.
 
   //defines and instantiates motors, pid controllers, and encoders
   private CANSparkMax leftShooterMotor = Robot.hardware.leftShooterMotor;
@@ -43,7 +42,6 @@ public class ExampleShooter extends SubsystemBase {
 
     public ShooterState(double shooterSpeedRPM, double shooterSpeedPercent){
       //sets the shooter's rpm and percent speed
-      // What is the point of this method
       this.shooterSpeedRPM = shooterSpeedRPM;
       this.shooterSpeedPercent = shooterSpeedPercent;
 
@@ -79,11 +77,11 @@ public class ExampleShooter extends SubsystemBase {
   public void setSpeeds(ShooterState shooterState){
     //a method to set the speeds of the motor
     currentShooterState = getShooterState();
-    //why is unused variable here, also why define and instantiate in one line
+
     double setpointRPM = currentShooterState.shooterSpeedRPM;
     double setpointPercent = currentShooterState.shooterSpeedPercent;
 
-    //what does this line mean
+    //Setting the pid controller to the setpoint speed
     rightShooterPID.setReference(setpointPercent, ControlType.kSmartMotion);
 
     SmartDashboard.putNumber("Left Shooter Setpoint", setpointPercent);
