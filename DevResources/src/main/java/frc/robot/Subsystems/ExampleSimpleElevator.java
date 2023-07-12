@@ -51,7 +51,7 @@ public class ExampleSimpleElevator extends SubsystemBase {
   Map<String, ElevatorState> elevatorStates = Map.ofEntries(
                     Map.entry("DEFAULT", new ElevatorState(0, 0)),
                     Map.entry("LOW_HEIGHT", new ElevatorState(5, 5)), 
-                    Map.entry("LOW_HEIGHT", new ElevatorState(10, 10))
+                    Map.entry("HIGH_HEIGHT", new ElevatorState(10, 10))
 
                 );
         

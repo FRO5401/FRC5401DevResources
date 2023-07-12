@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+//imports subsystems
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.Subsystems.ExampleClaw;
 import frc.robot.Subsystems.ExampleDrivebase;
@@ -16,16 +17,18 @@ import frc.robot.Subsystems.ExampleDrivebase;
  * directory.
  */
 public class Robot extends TimedRobot {
+  //defines variables for subsystems
 	public static Hardware hardware;
   public static ExampleClaw claw;
   public static ExampleDrivebase drivebase;
-
+  
 /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
   @Override
   public void robotInit() {
+    //when the robot is initiated, instantiates variables
     hardware = new Hardware();
     claw = new ExampleClaw();
     drivebase = new ExampleDrivebase();
